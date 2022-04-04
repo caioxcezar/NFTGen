@@ -17,7 +17,8 @@ public class NFT
         _output = output;
         _max = 1;
         
-        string[] folders = Directory.GetDirectories(_input);
+        List<string> folders = Directory.GetDirectories(_input).ToList();
+        folders.Sort((x, y) => String.CompareOrdinal(x, y));
         
         _parts = folders.Select(part => new
         {
